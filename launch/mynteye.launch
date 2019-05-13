@@ -4,7 +4,7 @@
 <arg name="second_camera_name" default="cam1" />
 <arg name="scale" default="1.0" />
 <arg name="process_every_nth_frame" default="1" />
-<arg name="stereo_params_camchain" default="$(find image_undistort)/cfg/euroc_camchain.yaml"/>
+<arg name="stereo_params_camchain" default="$(find image_undistort)/cfg/mynteye_camchain.yaml"/>
 
   <node name="dense_stereo" pkg="image_undistort" type="dense_stereo_node">
     <param name="input_camera_info_from_ros_params" value = "true"/>
@@ -17,8 +17,8 @@
     
     <rosparam file="$(arg stereo_params_camchain)"/>
 
-    <remap from="raw/first/image" to="$(arg first_camera_name)/image_raw"/>
-    <remap from="raw/second/image" to="$(arg second_camera_name)/image_raw"/>
+    <remap from="raw/first/image" to="/mynteye/left/image_raw"/>
+    <remap from="raw/second/image" to="/mynteye/right/image_raw"/>
   </node>
 
 </launch>
